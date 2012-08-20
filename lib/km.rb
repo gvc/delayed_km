@@ -92,7 +92,7 @@ class KM
         params << "#{CGI.escape(k.to_s)}=#{CGI.escape(v.to_s)}"
       end
       query = params.join("&")
-      KM.delay.get("http://#{DKM.host}/#{type}?#{query}")
+      Delayed::Job.enqueue KMJob.new("http://#{KM.host}/#{type}?#{query}")
     end
   end
 
