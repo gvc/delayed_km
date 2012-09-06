@@ -93,6 +93,7 @@ class KM
       query = params.join("&")
       url = "http://#{KM.host}/#{type}?#{query}"
       job = KMJob.new(url)
+      Rails.logger.debug url
       if Rails.application.config.delayed_km
         job.perform
       else
