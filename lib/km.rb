@@ -40,7 +40,6 @@ class KM
         props['_t'] = Time.now.to_i.to_s
       end
 
-
       delay_query("e", props)
     end
 
@@ -92,7 +91,13 @@ class KM
         params << "#{CGI.escape(k.to_s)}=#{CGI.escape(v.to_s)}"
       end
       query = params.join("&")
-      Delayed::Job.enqueue KMJob.new("http://#{KM.host}/#{type}?#{query}")
+      url = "http://#{KM.host}/#{type}?#{query}"
+      job = KMJob.new(url)
+      if Rails.application.config.delayed_km
+        job.perform
+      else
+        Delayed::Job.enqueue job
+      end
     end
   end
 
