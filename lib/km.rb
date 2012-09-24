@@ -95,9 +95,9 @@ class KM
       job = KMJob.new(url)
       Rails.logger.debug url
       if Rails.application.config.delayed_km
-        # job.perform
-      else
         Delayed::Job.enqueue job
+      else
+        # job.perform
       end
     end
   end
