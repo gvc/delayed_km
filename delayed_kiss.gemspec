@@ -13,9 +13,9 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "delayed_kiss"
 
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  s.files         = [".gitignore", ".rspec", ".rvmrc", ".travis.yml", "Gemfile", "README.textile", "Rakefile", "delayed_kiss.gemspec", "lib/delayed_kiss.rb", "lib/delayed_kiss/railtie.rb", "lib/delayed_kiss/version.rb", "lib/generators/delayed_kiss/install/install_generator.rb", "lib/generators/delayed_kiss/install/templates/.DS_Store", "lib/generators/delayed_kiss/install/templates/config/.DS_Store", "lib/generators/delayed_kiss/install/templates/config/delayed_kiss.yml", "spec/delayed_kiss_spec.rb", "spec/spec_helper.rb"]
+  s.test_files    = ["spec/delayed_kiss_spec.rb", "spec/spec_helper.rb"]
+  s.executables   = []
   s.require_paths = ["lib"]
 
   s.add_dependency("activesupport")
